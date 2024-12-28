@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Design Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input[type="text"], textarea { padding: 10px; width: 50%; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        img { margin-top: 20px; width: 300px; }
+    </style>
+</head>
+<body>
+    <h1>Character Design Tool</h1>
+    <form method="POST">
+        <label for="traits">Enter Character Traits:</label><br>
+        <textarea id="traits" name="traits" rows="4" cols="50" placeholder="e.g., a brave knight, with a loyal personality."></textarea><br><br>
+        <button type="submit">Generate Character</button>
+    </form>
+
+    {% if description %}
+    <h2>Character Description:</h2>
+    <p>{{ description }}</p>
+
+    {% if image %}
+    <h2>Character Image:</h2>
+    <img src="data:image/png;base64,{{ image | b64encode }}" alt="Character Image">
+    {% endif %}
+    {% endif %}
+</body>
+</html>
